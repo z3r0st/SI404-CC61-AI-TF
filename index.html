@@ -86,7 +86,7 @@
         </div>
         <div class="input">
           <h1>Asistente de Decisiones</h1>
-          <form>
+          <div>
             <div class="input__statements">
               <h3>
                 <b>I. Ingresa los enunciados</b>
@@ -182,7 +182,7 @@
                     class="input__operator__select__option"
                   >
                     <b>Conector de implicación:</b>
-                    <i>¿ Tiene que suceder A para que pueda darse B ?</i>
+                    <i>¿ Tiene que suceder B para que pueda darse A ?</i>
                     <input
                       type="radio"
                       name="operator"
@@ -198,7 +198,7 @@
                     class="input__operator__select__option"
                   >
                     <b>Conector de replicación:</b>
-                    <i>¿ Tiene que suceder B para que pueda darse A ?</i>
+                    <i>¿ Tiene que suceder A para que pueda darse B ?</i>
                     <input
                       type="radio"
                       name="operator"
@@ -229,7 +229,7 @@
             <button class="input__btn" onclick="validateDecision();">
               &lt;- Validar decisión -&gt;
             </button>
-          </form>
+          </div>
         </div>
         <div class="output">
           <h3 class="ouput__preface">
@@ -281,7 +281,6 @@
               "<b>" + a + "</b> y <b>" + b + "</b> no es una buena combinación."
             }`;
         console.log(result);
-        nana;
       }
     </script>
   </body>
