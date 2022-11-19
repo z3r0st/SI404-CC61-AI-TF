@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="shortcut icon" href="#" />
     <title>Asistente de decisiones</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.6.0/dist/tf.min.js"></script>
   </head>
   <body>
     <main>
@@ -20,7 +21,7 @@
             <h4>
               Esta aplicación usa un modelo de Machine Learning que ha sido
               entrenado para <b>aprender</b> la tabla de verdad de cada uno de
-              los principales operadores de la Lógica Proposicional.
+              los principales conectores de la Lógica Proposicional.
             </h4>
           </div>
           <div class="introduction__overview">
@@ -62,11 +63,11 @@
                   (Por <i>default</i> es verdadero).
                 </li>
                 <li>
-                  Revisa la lista de operadores de Lógica Proposicional y su
+                  Revisa la lista de conectores de Lógica Proposicional y su
                   descripción.
                 </li>
                 <li>
-                  Elige el operador [~] que mejor describa la relación entre los
+                  Elige el conector [~] que mejor describa la relación entre los
                   dos enunciados ingresados.
                 </li>
                 <li>Haz click en el botón "Validar decisión".</li>
@@ -136,7 +137,7 @@
             </div>
             <div class="input__operator">
               <h3>
-                <b>II. Escoge el operador</b>
+                <b>II. Escoge el conector</b>
               </h3>
               <div class="input__operator__select">
                 <div class="input__operator__select__options">
@@ -144,7 +145,7 @@
                     htmlFor="conjunction"
                     class="input__operator__select__option"
                   >
-                    <b>Operador de conjunción:</b>
+                    <b>Conector de conjunción:</b>
                     <i>¿ Ambos enunciados son igual de importantes ?</i>
                     <input
                       type="radio"
@@ -161,7 +162,7 @@
                     htmlFor="disjunction"
                     class="input__operator__select__option"
                   >
-                    <b>Operador de disjunción:</b>
+                    <b>Conector de disjunción:</b>
                     <i
                       >¿ Estarías satisfecho con lograr cualquiera de los
                       dos?</i
@@ -180,7 +181,7 @@
                     htmlFor="implication"
                     class="input__operator__select__option"
                   >
-                    <b>Operador de implicación:</b>
+                    <b>Conector de implicación:</b>
                     <i>¿ Tiene que suceder A para que pueda darse B ?</i>
                     <input
                       type="radio"
@@ -196,7 +197,7 @@
                     htmlFor="replication"
                     class="input__operator__select__option"
                   >
-                    <b>Operador de replicación:</b>
+                    <b>Conector de replicación:</b>
                     <i>¿ Tiene que suceder B para que pueda darse A ?</i>
                     <input
                       type="radio"
@@ -212,7 +213,7 @@
                     htmlFor="biconditional"
                     class="input__operator__select__option"
                   >
-                    <b>Operador bicondicional:</b>
+                    <b>Conector bicondicional:</b>
                     <i>¿ A y B solo servirán si se realizan ambos ?</i>
                     <input
                       type="radio"
@@ -239,8 +240,6 @@
         </div>
       </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.6.0/dist/tf.min.js"></script>
-
     <script type="text/javascript">
       var model = null;
       (async () => {
@@ -248,21 +247,41 @@
       })();
 
       function validateDecision() {
-        let a = document.getElementById("statement-1-truth").checked ? 1 : 0;
-        console.log("A = " + a);
-        let b = document.getElementById("statement-2-truth").checked ? 1 : 0;
-        console.log("B = " + b);
+        let a = document.getElementById("statement-1").value;
+        let b = document.getElementById("statement-2").value;
+
+        if (a == "" && b == "") {
+          document.getElementById("output").innerHTML =
+            "Primero debes ingresar dos enunciados";
+          return;
+        }
+        let aTruth = document.getElementById("statement-1-truth").checked
+          ? 1
+          : 0;
+        console.log("A = " + aTruth);
+        let bTruth = document.getElementById("statement-2-truth").checked
+          ? 1
+          : 0;
+        console.log("B = " + bTruth);
         let operator = document.querySelector(
           'input[name="operator"]:checked'
         ).value;
         console.log("Operator = " + operator);
 
-        let data = tf.tensor([[a, b, operator]]);
+        let data = tf.tensor2d([[aTruth, bTruth, operator]]);
         let prediction = model.predict(data).dataSync();
-        let result = Math.round(prediction[0], 1);
+        let result = Math.round(prediction[0], 1) == 1;
+        [aTruth, bTruth] = [aTruth == 1, bTruth == 1];
+        console.log(aTruth, bTruth, a, b);
         document.getElementById("output").innerHTML = result
-          ? "Buena decisión :)"
-          : "Mala decisión :(";
+          ? `Buena decisión :)<br/> ${
+              "<b>" + a + "</b> y <b>" + b + "</b> es una buena combinación."
+            }`
+          : `Mala decisión :(<br/> ${
+              "<b>" + a + "</b> y <b>" + b + "</b> no es una buena combinación."
+            }`;
+        console.log(result);
+        nana;
       }
     </script>
   </body>
