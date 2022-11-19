@@ -1,0 +1,198 @@
+:root {
+  --primary-color: #161a17;
+  --secondary-color: #7aebb6;
+  --primary-light-color: #505050;
+  --secondary-light-color: #abeb4a;
+  --font-dark-color: #020202;
+  --font-light-color: #cae0e6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  line-height: 1.5em;
+  padding: 0.4em 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+h2 {
+  font-style: italic;
+  font-weight: medium;
+  font-size: 32px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 26px;
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 22px;
+}
+
+h5 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+p {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+li {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18;
+  line-height: 2rem;
+  background-color: var(--secondary-light-color);
+}
+
+.main {
+  margin: 3rem;
+  padding: 2rem;
+  border-radius: 30px;
+  border: 7px solid white;
+  text-align: center;
+  color: var(--font-light-color);
+  background-color: var(--primary-color);
+}
+
+.main h1,
+.main h2 {
+  color: var(--secondary-color);
+}
+
+.introduction {
+  border-radius: 1rem 1rem 0 0;
+  border: 2px groove var(--secondary-light-color);
+}
+.input {
+  border-radius: 0 0 1rem 1rem;
+  border: 2px groove var(--secondary-light-color);
+}
+
+.introduction,
+.input {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.introduction__title {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.introduction__overview__list,
+.introduction__instructions__list {
+  width: 55%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  line-height: 2.5rem;
+}
+
+.introduction__overview__list ol,
+.introduction__instructions__list ol {
+  text-align: left;
+}
+
+.input {
+  padding-bottom: 10px;
+}
+
+.input__operator__select__options {
+  display: block;
+  width: 55%;
+  margin: 0 auto;
+  line-height: 2rem;
+}
+.input__statements__text {
+  width: 300px;
+  height: 1.3rem;
+  text-align: center;
+  color: var(--font-light-color);
+  border-radius: 10px;
+  border: 1px groove var(--secondary-color);
+  background-color: var(--primary-light-color);
+}
+
+.input__btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5em 1em;
+  font-size: 18px;
+  border: 3px solid #e2e2e2;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  color: var(--font-light-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.checkmark {
+  font-weight: bold;
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 1px;
+  background-color: var(--primary-color);
+}
+
+.input__operator__select__option {
+  padding: 0.5rem;
+}
+
+.input__operator__select__option input {
+  opacity: 0;
+}
+
+.input__operator__select__options:hover {
+  cursor: pointer;
+  border: 1px solid var(--secondary-light-color);
+  border-radius: 5px;
+}
+
+.input__operator__select__options:hover,
+.input__operator__select__options:hover input ~ .checkmark {
+  background-color: var(--primary-light-color);
+}
+
+.input__operator__select__option input:checked ~ .checkmark {
+  border-radius: 50%;
+  color: var(--font-dark-color);
+  background-color: var(--secondary-light-color);
+}
+
+.input__btn:hover {
+  border: 3px solid var(--primary-light-color);
+  border-radius: 20px;
+  background-color: var(--secondary-light-color);
+  color: var(--font-dark-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.output {
+  text-align: center;
+}

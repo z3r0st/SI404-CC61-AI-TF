@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="shortcut icon" href="#" />
+    <title>Asistente de decisiones</title>
+  </head>
+  <body>
+    <main>
+      <div class="main">
+        <div class="introduction">
+          <div class="introduction__title">
+            <h1>
+              Bienvenido al asistente de decisiones basado en Lógica
+              Proposicional
+            </h1>
+            <h4>
+              Esta aplicación usa un modelo de Machine Learning que ha sido
+              entrenado para <b>aprender</b> la tabla de verdad de cada uno de
+              los principales operadores de la Lógica Proposicional.
+            </h4>
+          </div>
+          <div class="introduction__overview">
+            <h2>¿ El propósito ?</h2>
+            <div class="introduction__overview__list">
+              <ol>
+                <li>
+                  Proveer de una aplicación interactiva que permita ayudar a
+                  tomar decisiones simples del día a día.
+                </li>
+                <li>
+                  Facilitar y hacer más didáctico el aprendizaje de la lógica
+                  proposicional mediante una aplicación que la implementa de
+                  forma intuitiva con un enfoque netamente aplicativo.
+                </li>
+                <li>
+                  Entretener, así es, también puedes usar la aplicación en algún
+                  momento de aburrimiento, solo para pasar el rato.
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="introduction__instructions">
+            <h2>¿ En qúe consiste ?</h2>
+            <h4>
+              Para explicar el funcionamiento, nada mejor que una lista de
+              instrucciones:
+            </h4>
+            <div class="introduction__instructions__list">
+              <ol>
+                <li>Ingresa un primer enunciado [A], e.g. <i>Hace frío</i>.</li>
+                <li>
+                  Ingresa un segundo enunciado [B], e.g. <i>Ir a la playa</i>.
+                </li>
+                <li>
+                  Indica mediante el switch de activación respectivo si cada
+                  enunciado es verdadero o falso <br />
+                  <b>Tip:</b> Solo presiona el switch si el enunciado es falso
+                  (Por <i>default</i> es verdadero).
+                </li>
+                <li>
+                  Revisa la lista de operadores de Lógica Proposicional y su
+                  descripción.
+                </li>
+                <li>
+                  Elige el operador [~] que mejor describa la relación entre los
+                  dos enunciados ingresados.
+                </li>
+                <li>Haz click en el botón "Validar decisión".</li>
+                <li>
+                  Recibe como respuesta si la decisión es buena (el resultado de
+                  A ~ B es verdadero).
+                </li>
+              </ol>
+              <h4>
+                Puedes repetir el proceso cuantas veces sea necesario, hasta
+                encontrar una combinación satisfactoria que sea recomendada por
+                la aplicación.
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="input">
+          <h1>Asistente de Decisiones</h1>
+          <form>
+            <div class="input__statements">
+              <h3>
+                <b>I. Ingresa los enunciados</b>
+              </h3>
+              Desactiva la caja de check si es falso.
+              <div class="input__statements__1">
+                <label htmlFor="statement-1">
+                  Ingresa el primer enunciado [A] :
+                </label>
+                <input
+                  type="text"
+                  class="input__statements__text"
+                  id="statement-1"
+                  width="100"
+                />
+                <input
+                  type="checkbox"
+                  class="input__statements__truth"
+                  id="statement-1-truth"
+                  checked
+                />
+                <label
+                  htmlFor="statement-1-truth"
+                  class="input__statements__toggle"
+                ></label>
+              </div>
+              <div class="input__statements__1">
+                <label htmlFor="statement-2">
+                  Ingresa el primer enunciado [B] :
+                </label>
+                <input
+                  type="text"
+                  class="input__statements__text"
+                  id="statement-2"
+                  width="100"
+                />
+                <input
+                  type="checkbox"
+                  class="input__statements__truth"
+                  id="statement-2-truth"
+                  checked
+                />
+                <label
+                  htmlFor="statement-2-truth"
+                  class="input__statements__toggle"
+                ></label>
+              </div>
+            </div>
+            <div class="input__operator">
+              <h3>
+                <b>II. Escoge el operador</b>
+              </h3>
+              <div class="input__operator__select">
+                <div class="input__operator__select__options">
+                  <label
+                    htmlFor="conjunction"
+                    class="input__operator__select__option"
+                  >
+                    <b>Operador de conjunción:</b>
+                    <i>¿ Ambos enunciados son igual de importantes ?</i>
+                    <input
+                      type="radio"
+                      name="operator"
+                      id="conjunction"
+                      value="0"
+                      checked
+                    />
+                    <span class="checkmark">&lt; &gt;</span>
+                  </label>
+                </div>
+                <div class="input__operator__select__options">
+                  <label
+                    htmlFor="disjunction"
+                    class="input__operator__select__option"
+                  >
+                    <b>Operador de disjunción:</b>
+                    <i
+                      >¿ Estarías satisfecho con lograr cualquiera de los
+                      dos?</i
+                    >
+                    <input
+                      type="radio"
+                      name="operator"
+                      id="disjunction"
+                      value="0.25"
+                    />
+                    <span class="checkmark">&lt; &gt;</span>
+                  </label>
+                </div>
+                <div class="input__operator__select__options">
+                  <label
+                    htmlFor="implication"
+                    class="input__operator__select__option"
+                  >
+                    <b>Operador de implicación:</b>
+                    <i>¿ Tiene que suceder A para que pueda darse B ?</i>
+                    <input
+                      type="radio"
+                      name="operator"
+                      id="implication"
+                      value="0.50"
+                    />
+                    <span class="checkmark">&lt; &gt;</span>
+                  </label>
+                </div>
+                <div class="input__operator__select__options">
+                  <label
+                    htmlFor="replication"
+                    class="input__operator__select__option"
+                  >
+                    <b>Operador de replicación:</b>
+                    <i>¿ Tiene que suceder B para que pueda darse A ?</i>
+                    <input
+                      type="radio"
+                      name="operator"
+                      id="replication"
+                      value="0.75"
+                    />
+                    <span class="checkmark">&lt; &gt;</span>
+                  </label>
+                </div>
+                <div class="input__operator__select__options">
+                  <label
+                    htmlFor="biconditional"
+                    class="input__operator__select__option"
+                  >
+                    <b>Operador bicondicional:</b>
+                    <i>¿ A y B solo servirán si se realizan ambos ?</i>
+                    <input
+                      type="radio"
+                      name="operator"
+                      id="biconditional"
+                      value="1"
+                    />
+                    <span class="checkmark">&lt; &gt;</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <button class="input__btn" onclick="validateDecision();">
+              &lt;- Validar decisión -&gt;
+            </button>
+          </form>
+        </div>
+        <div class="output">
+          <h3 class="ouput__preface">
+            <span class="output__value" id="output">
+              Haz click en "Validar decisión" para obtener un resultado
+            </span>
+          </h3>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.6.0/dist/tf.min.js"></script>
+
+    <script type="text/javascript">
+      var model = null;
+      (async () => {
+        model = await tf.loadLayersModel("./model.json");
+      })();
+
+      function validateDecision() {
+        let a = document.getElementById("statement-1-truth").checked ? 1 : 0;
+        console.log("A = " + a);
+        let b = document.getElementById("statement-2-truth").checked ? 1 : 0;
+        console.log("B = " + b);
+        let operator = document.querySelector(
+          'input[name="operator"]:checked'
+        ).value;
+        console.log("Operator = " + operator);
+
+        let data = tf.tensor([[a, b, operator]]);
+        let prediction = model.predict(data).dataSync();
+        let result = Math.round(prediction[0], 1);
+        document.getElementById("output").innerHTML = result
+          ? "Buena decisión :)"
+          : "Mala decisión :(";
+      }
+    </script>
+  </body>
+</html>
