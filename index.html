@@ -249,6 +249,7 @@
       function validateDecision() {
         let a = document.getElementById("statement-1").value;
         let b = document.getElementById("statement-2").value;
+        b = b[0].toLowerCase() + b.slice(1);
 
         if (a == "" && b == "") {
           document.getElementById("output").innerHTML =
@@ -275,10 +276,26 @@
         console.log(aTruth, bTruth, a, b);
         document.getElementById("output").innerHTML = result
           ? `Buena decisión :)<br/> ${
-              "<b>" + a + "</b> y <b>" + b + "</b> es una buena combinación."
+              "<b>" +
+              (aTruth ? "" : "No ") +
+              a +
+              (b[0].toLowerCase() === "i" && bTruth
+                ? "</b> e <b>"
+                : "</b> y <b>") +
+              (bTruth ? "" : "no ") +
+              b +
+              "</b> es una buena combinación."
             }`
           : `Mala decisión :(<br/> ${
-              "<b>" + a + "</b> y <b>" + b + "</b> no es una buena combinación."
+              "<b>" +
+              (aTruth ? "" : "No ") +
+              a +
+              (b[0].toLowerCase() === "i" && bTruth
+                ? "</b> e <b>"
+                : "</b> y <b>") +
+              (bTruth ? "" : "no ") +
+              b +
+              "</b> no es una buena combinación."
             }`;
         console.log(result);
       }
