@@ -249,13 +249,15 @@
       function validateDecision() {
         let a = document.getElementById("statement-1").value;
         let b = document.getElementById("statement-2").value;
-        b = b[0].toLowerCase() + b.slice(1);
 
         if (a == "" && b == "") {
           document.getElementById("output").innerHTML =
             "Primero debes ingresar dos enunciados";
           return;
         }
+
+        b = b[0].toLowerCase() + b.slice(1);
+
         let aTruth = document.getElementById("statement-1-truth").checked
           ? 1
           : 0;
